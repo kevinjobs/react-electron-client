@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Route,
   Switch,
@@ -5,13 +6,18 @@ import {
 } from 'react-router-dom';
 import Test from '../pages/Test';
 import Exam from '../pages/Exam';
+import ExifReader from '../pages/ExifReader';
 
-export default function RouteContent() {
+
+const RouteContent = () => {
   return(
     <Switch>
       <Route path="/Test" component={Test} />
       <Route path="/题库" component={Exam} />
+      <Route paht="/ExifReader" component={ExifReader} />
       <Redirect path="/" to={{pathname: '/song'}} />
     </Switch>
   )
 }
+
+export default RouteContent;
