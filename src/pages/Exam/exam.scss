@@ -1,0 +1,97 @@
+.Exam {
+  .Exam__subjects-views {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0px;
+    .Exam__subjects-views__title {
+      width: 100%;
+    }
+  }
+  .Exam__question-panel {
+    .Exam__question-panel__card {
+      width: 700px;
+      height: 500px;
+      background-color: #fff;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      border-radius: 5px;
+      display: flex;
+      .Exam__question-panel__card-left {
+        width: 70%;
+        height: 100%;
+        border-right: 1px solid #bbb;
+        .Exam__question-panel__card-left__header {
+          padding: 0 20px;
+          margin: 0;
+          height: 50px;
+          line-height: 50px;
+          border-bottom: 1px solid #bbb;
+          overflow: hidden;
+        }
+        .Exam__question-panel__card-left__content {
+          padding: 5px 20px;
+          line-height: 2;
+          height: 300px;
+          overflow-y: scroll;
+          border-bottom: 1px solid #bbb;
+        }
+        .Exam__question-panel__card-left__answer {
+          margin: 0;
+          padding: 5px 20px;
+          height: 150px;
+          overflow-y: scroll;
+          .Exam__question-panel__card-left__answer__item {
+            display: flex;
+            align-items: flex-start;
+            padding: 2px 10px;
+            cursor: pointer;
+            &:hover {
+              background-color: #d1d1d1;
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+      .Exam__question-panel__card-right {
+        width: 30%;
+        height: 100%;
+        .Exam__question-panel__card-right__close {
+          text-align: right;
+          padding: 10px 15px 0 0;
+          cursor: pointer;
+          &:hover {
+            color: cornflowerblue;
+          }
+        }
+        .Exam__question-panel__card-right__stat {
+          height: 200px;
+          border-bottom: 1px solid #bbb;
+          text-align: center;
+        }
+        .Exam__question-panel__card-right__index {
+          height: 300px;
+          span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #bbb;
+            margin: 6px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+              background-color: #dfdfdf;
+            }
+          }
+          span.selected {
+            background-color: cadetblue;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.Control {
+  display: inline-block;
+  .Control__button {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    margin: 0 5px;
+  }
+  .Control__close {
+    background-color: brown;
+  }
+  .Control__expand {
+    background-color: darkgreen;
+  }
+  .Control__minimize {
+    background-color: gainsboro;
+  }
+}

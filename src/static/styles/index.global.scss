@@ -1,0 +1,34 @@
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.shadow-5 {
+  box-shadow: 5px 5px 5px rgba($color: #000000, $alpha: .35);
+}
+
+.mask-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #000000, $alpha: .75);
+}
+
+.tag-1 {
+  background-color: saddlebrown;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 8px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.tag-2 {
+  background-color: #a1a1a1;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 8px;
+  margin: 0 5px;
+  border-radius: 5px;
+}

@@ -1,0 +1,17 @@
+@import './static/styles/index.scss';
+
+.Left {
+  width: 180px;
+  min-width: 180px;
+}
+
+.Center {
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  min-width: 400px;
+}
+
+*[class*='ant-'] {
+  @import '~antd/dist/antd.css';
+}
