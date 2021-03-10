@@ -1,24 +1,64 @@
 import React from 'react';
-import { ipcRenderer } from 'electron';
+import { remote } from 'electron';
+import fs from 'fs';
+import './_style.scss';
+const ExifImage = require('exif').ExifImage;
 
 const ExifReader: React.FC = () => {
-  const [exif, setExif] = React.useState<any>();
+  const [exifInfo, setExifInfo] = React.useState<any>({});
 
-  React.useEffect(() => {
-    // 接收主进程读取的图片exif信息
-    ipcRenderer.on('read-exif-reply', (event, data) => {
-      setExif(data);
-      console.log(data);
-    })
-  }, [])
+  const handleClick = async () => {
+    await readExif();
+  }
 
-  return (
-    <div className="Exif-Reader">
-      <button onClick={e => ipcRenderer.send('image', 'read-exif')}>
-        Open the picture
-      </button>
-      <table>
-      </table>
+  const readExif = async () => {
+    const result = await remote.dialog.showOpenDialog({
+      title: '打开图片',
+      properties: [
+        'openFile'
+      ],
+      filters: [{
+        name: 'Image',
+        extensions: ['jpg', 'png', 'jpeg']
+      }]
+    });
+  
+    if (!result.canceled) {
+      fs.readFile(result.filePaths[0], (err: any, data: any) => {
+        if (err) console.error(err);
+        else {
+          try {
+            new ExifImage({image: result.filePaths[0]}, (err: any, exifData: any) => {
+              if (err) console.error(err);
+              else setExifInfo(exifData);
+            })
+          } catch (err) {
+            console.error(err);
+          }
+        };
+      })
+    }
+  }
+
+  const renderExif = (exifInfo: any) => {
+    const { image, exif } = exifInfo;
+    return (
+      <>
+        <li>制造商 { image?.Make }</li>
+        <li>型号 { image?.Model }</li>
+        <li>修改日期 { image?.ModifyDate }</li>
+        <li>焦距 { exif?.FocalLength }</li>
+        <li>快门 1/{ Number( 1 / exif?.ExposureTime).toFixed() }</li>
+        <li>光圈 { exif?.FNumber }</li>
+        <li>ISO { exif?.ISO }</li>
+      </>
+    )
+  }
+
+  return(
+    <div className="exif-reader">
+      <button onClick={handleClick}>Read</button>
+      { exifInfo && renderExif(exifInfo) }
     </div>
   )
 }

@@ -18,18 +18,19 @@
   .Sidebar__item {
     line-height: 3;
     cursor: pointer;
-    padding: 0 20px;
     a {
+      display: block;
       color: #222;
       text-decoration: none;
+      width: 100%;
+      height: 100%;
+      &:hover {
+        background-color: #555;
+        color: #d1d1d1;
+      }
       &.active {
         color: #fff;
-      }
-    }
-    &:hover {
-      background-color: #333;
-      a {
-        color: #d1d1d1;
+        background-color: #555;
       }
     }
   }

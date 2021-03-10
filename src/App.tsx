@@ -9,8 +9,8 @@ interface Props {}
 const App: React.FC<Props> = (props: Props) => {
   const menus = [
     '题库',
-    'Exif Reader',
-    'Test'
+    'Exif读取',
+    '文件浏览器'
   ]
 
   return(
